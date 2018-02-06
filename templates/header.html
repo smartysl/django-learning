@@ -1,0 +1,20 @@
+{% load staticfiles %}
+<div class="container">
+    <nav class="navbar navbar-default" role="navigation">
+        <div>
+            <ul class="nav navbar-nav" role="navigation">
+                <li><a href="{% url 'blog:blog_title' %}">首页</a> </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right" style="margin-right:10px">
+                {% if user.is_authenticated %}
+                <li><a href="#">{{ user.username }}</a> </li>
+                <li><a href="{% url 'account:user_logout' %}">退出登录</a> </li>
+                <li><a href="{% url 'account:password_change' %}">修改密码</a> </li>
+                <li><a href="{% url 'account:edit_my_information' %}">编辑信息</a></li>
+                {% else %}
+                <li><a href="{% url 'account:user_login' %}">登录</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+</div>
